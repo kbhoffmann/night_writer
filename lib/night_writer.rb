@@ -1,5 +1,5 @@
 text_filename = ARGV[0]
-message_data = File.read(text_filename)
+message_data = File.read(text_filename).chomp.split("")
 number_of_characters = message_data.length
 
 braille_filename = ARGV[1]
