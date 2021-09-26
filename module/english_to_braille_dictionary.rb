@@ -129,8 +129,4 @@ module EBDictionary
       ]
     }
   end
-
-  def find_braille_by_letter(letter)
-    dictionary[letter]
-  end
 end
