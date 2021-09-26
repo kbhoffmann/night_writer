@@ -1,12 +1,12 @@
 message = File.open(ARGV[0], "r")
-message_data = message.read
+message_data = message.read.chomp.split("")
 #re-add .chomp to remove newline?
 #moved .chomp.split("") to number_of_characters line before .length
 message.close
 
 print message_data
 
-number_of_characters = message_data.chomp.split("").length
+number_of_characters = message_data.length
 
 braille= File.open(ARGV[1], "w")
 braille.close
