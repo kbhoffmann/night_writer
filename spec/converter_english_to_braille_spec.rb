@@ -13,9 +13,9 @@ RSpec.describe EnglishToBrailleConverter do
   it "can find braille by the english letter" do
     converter = EnglishToBrailleConverter.new
 
-    expect(converter.find_braille_by_letter("z")).to eq("..\n.0\n..")
-    expect(converter.find_braille_by_letter("k")).to eq("..\n..\n..")
+    expect(converter.find_braille_by_letter("a")).to eq(".0\n0.\n..")
     expect(converter.find_braille_by_letter("m")).to eq("..\n0.\n..")
+    expect(converter.find_braille_by_letter("z")).to eq("..\n.0\n..")
   end
 
   it "can find mulitple braille characters by mulitple letters" do
