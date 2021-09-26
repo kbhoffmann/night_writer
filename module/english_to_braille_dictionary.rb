@@ -1,10 +1,7 @@
 module EBDictionary
-  # grid = [
-  #     [1,4],
-  #     [2,5],
-  #     [3,6]
-  #     ]
-    dictionary = {
+
+  def dictionary
+      {
     "a" => [
       ["0","."],
       [".","."],
@@ -131,13 +128,5 @@ module EBDictionary
       ["0","0"]
       ]
     }
-# p dictionary["a"]
-# puts "\n"
-# p dictionary["b"]
-# puts "\n"
-# p dictionary["c"]
-# puts "\n"
-# p dictionary["d"]
-# puts "\n"
-# p dictionary["e"]
+  end
 end
