@@ -23,7 +23,8 @@ RSpec.describe EnglishToBrailleConverter do
 
     expected_abc = ["0.\n..\n..", "0.\n0.\n..", "00\n..\n.."]
     expected_dogs = ["00\n.0\n..", "0.\n.0\n0.", "00\n00\n..", ".0\n0.\n0."]
-    expected_kerri = ["0.\n..\n0.", "0.\n.0\n..", "0.\n00\n0.", "0.\n00\n0.", "0.\n0.\n0."]
+    expected_kerri = ["0.\n..\n0.", "0.\n.0\n..", "0.\n00\n0.", "0.\n00\n0.", "0.\n0.\n0.", "..\n00\n.0"]
+    expected_abc_dogs = ["0.\n..\n..", "0.\n0.\n..", "00\n..\n..", "..\n..\n..", "00\n.0\n..", "0.\n.0\n0.", "00\n00\n..", ".0\n0.\n0." ]
 
     expect(converter.find_braille_by_letter("a")).to eq(["0.\n..\n.."])
     expect(converter.find_braille_by_letter("A")).to eq(["0.\n..\n.."])
@@ -32,23 +33,7 @@ RSpec.describe EnglishToBrailleConverter do
     expect(converter.find_braille_by_letter("Z")).to eq(["0.\n.0\n00"])
     expect(converter.find_braille_by_letter("aBc")).to eq(expected_abc)
     expect(converter.find_braille_by_letter("dOgS")).to eq(expected_dogs)
-    expect(converter.find_braille_by_letter("KerrI")).to eq(expected_kerri)
+    expect(converter.find_braille_by_letter("KerrI.")).to eq(expected_kerri)
+    expect(converter.find_braille_by_letter("abc dogs")).to eq(expected_abc_dogs)
   end
 end
-
-#
-# expected_kerri = [["0", "."], [".", "."], ["0", "."]],
-#                  [["0", "."], [".", "0"], [".", "."]],
-#                  [["0", "."], ["0", "0"], ["0", "."]],
-#                  [["0", "."], ["0", "0"], ["0", "."]],
-#                  [[".", "0"], ["0", "."], [".", "."]]
-
-
-  # expected_dogs = [["0", "0"], [".", "0"], [".", "."]],
-  #                 [["0", "."], [".", "0"], ["0", "."]],
-  #                 [["0", "0"], ["0", "0"], [".", "."]],
-  #                 [[".", "0"], ["0", "."], ["0", "."]]
-
-  # expected_abc = [["0", "."], [".", "."], [".", "."]],
-  #                [["0", "."], ["0", "."], [".", "."]],
-  #                [["0", "0"], [".", "."], [".", "."]]
