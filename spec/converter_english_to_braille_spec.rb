@@ -1,5 +1,4 @@
 require './lib/converter_english_to_braille'
-# require './module/english_to_braille_dictionary'
 require 'pry'
 
 RSpec.describe EnglishToBrailleConverter do
@@ -10,24 +9,22 @@ RSpec.describe EnglishToBrailleConverter do
     expect(converter).to be_an_instance_of(EnglishToBrailleConverter)
   end
 
-  it "can find braille by the english letter" do
+  it "can turn a message into an array" do
     converter = EnglishToBrailleConverter.new
 
-    expect(converter.find_braille_by_letter("a")).to eq(".0\n0.\n..")
-    expect(converter.find_braille_by_letter("m")).to eq("..\n0.\n..")
-    expect(converter.find_braille_by_letter("z")).to eq("..\n.0\n..")
+    expect(converter.turn_message_to_array("z")).to eq(["z"])
+    expect(converter.turn_message_to_array("hello")).to eq(["h", "e", "l", "l", "o"])
+    expect(converter.turn_message_to_array("hey there")).to eq(["h", "e", "y", " ", "t", "h", "e", "r", "e"])
   end
-
-  it "can find mulitple braille characters by mulitple letters" do
-    converter = EnglishToBrailleConverter.new
-
-    expected_abc = [".0\n0.\n..", "..\n..\n..", "..\n0.\n.."]
-    expected_dogs = ["..\n.0\n..", "0.\n..\n..", "..\n00\n..", "..\n.0\n.."]
-    expected_kerri = ["..\n..\n..", "..\n..\n.0", "..\n..\n..", "..\n..\n..", ".0\n0.\n.."]
-
-    expect(converter.find_braille_by_mulitple_letters(["a" , "b" , "c"])).to eq(expected_abc)
-    expect(converter.find_braille_by_mulitple_letters(["d", "o", "g", "s"])).to eq(expected_dogs)
-    expect(converter.find_braille_by_mulitple_letters(["k", "e", "r", "r", "i"])).to eq(expected_kerri)
+  # it "can find mulitple braille characters by mulitple letters" do
+  #   converter = EnglishToBrailleConverter.new
+  #
+  #   expected_dogs = ["..\n.0\n..", "0.\n..\n..", "..\n00\n..", "..\n.0\n.."]
+  #   expected_kerri = ["..\n..\n..", "..\n..\n.0", "..\n..\n..", "..\n..\n..", ".0\n0.\n.."]
+  #
+  #   expect(converter.find_braille_by_mulitple_letters(["d", "o", "g", "s"])).to eq(expected_dogs)
+  #   expect(converter.find_braille_by_mulitple_letters(["k", "e", "r", "r", "i"])).to eq(expected_kerri)
+  # end
 end
 
 #
