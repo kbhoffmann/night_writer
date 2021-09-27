@@ -1,15 +1,18 @@
-message = File.open(ARGV[0], "r")
-message_data = message.read.chomp.split("")
-message.close
+require 'pry'
+require './lib/converter_english_to_braille'
 
-# print message_data
+message_file = File.open(ARGV[0], "r")
+message_data = message_file.read
+message_file.close
 
-number_of_characters = message_data.length
+letters = EnglishToBrailleConverter.new
+braille = letters.find_braille_by_letter(message_data)
 
-braille= File.open(ARGV[1], "w")
-braille.close
+braille_file = File.open(ARGV[1], "w")
+braille_file.write(braille)
+braille_file.close
 
-puts "Created '#{braille}' containing #{number_of_characters} characters."
+puts "Created '#{ARGV[1]}' containing #{message_data.length} characters."
 #if you want to write an array to a file you'll have to convert it to a string first using...
 #this below (is called serialization)
 #File.write("log.txt", [1,2,3].join("\n"), mode: "a")
