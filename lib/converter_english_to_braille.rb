@@ -5,18 +5,18 @@ class EnglishToBrailleConverter
 
   def initialize
     @dictionary = {
-             "a" => ".0\n0.\n..",
-             "b" => "..\n..\n..",
-             "c" => "..\n0.\n..",
-             "d" => "..\n.0\n..",
-             "e" => "..\n..\n.0",
-             "f" => "..\n..\n.0",
-             "g" => "..\n00\n..",
-             "h" => "0.\n..\n..",
+             "a" => "0.\n..\n..",
+             "b" => "0.\n0.\n..",
+             "c" => "00\n..\n..",
+             "d" => "00\n.0\n..",
+             "e" => "0.\n.0\n..",
+             "f" => "00\n0.\n00",
+             "g" => "00\n00\n..",
+             "h" => "0.\n00\n..",
              "i" => ".0\n0.\n..",
-             "j" => "..\n..\n.0",
+             "j" => ".0\n..\n..",
              "k" => "..\n..\n..",
-             "l" => "..\n0.\n..",
+             "l" => "0.\n0.\n0.",
              "m" => "..\n0.\n..",
              "n" => ".0\n..\n..",
              "o" => "0.\n..\n..",
@@ -35,7 +35,9 @@ class EnglishToBrailleConverter
   end
 
   def turn_message_to_array(letters)
-    letters.chomp.split("")
+    split_letters = letters.chomp.split("").map do |letter|
+      letter
+    end
   end
 
   # def find_braille_by_letter(letter)
@@ -43,8 +45,10 @@ class EnglishToBrailleConverter
   # end
 
   def find_braille_by_letter(letters)
-    turn_message_to_array(letters).map do |letter|
+    characters = turn_message_to_array(letters).map do |letter|
       @dictionary[letter]
-    end.compact.flatten[0]
+    end.compact[0]
   end
+
+
 end
