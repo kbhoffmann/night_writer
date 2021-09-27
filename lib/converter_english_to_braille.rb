@@ -1,3 +1,5 @@
+# require './lib/night_writer'
+require 'pry'
 
 class EnglishToBrailleConverter
 
@@ -32,14 +34,17 @@ class EnglishToBrailleConverter
             }
   end
 
-  def find_braille_by_letter(letter)
-    @dictionary[letter]
+  def turn_message_to_array(letters)
+    letters.chomp.split("")
   end
 
-  def find_braille_by_mulitple_letters(letters)
-    letters.map do |letter|
+  # def find_braille_by_letter(letter)
+  #   @dictionary[letter]
+  # end
+
+  def find_braille_by_letter(letters)
+    turn_message_to_array(letters).map do |letter|
       @dictionary[letter]
-    end
+    end.compact.flatten[0]
   end
-  
 end
