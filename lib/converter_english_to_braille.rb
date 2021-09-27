@@ -13,42 +13,37 @@ class EnglishToBrailleConverter
              "f" => "00\n0.\n00",
              "g" => "00\n00\n..",
              "h" => "0.\n00\n..",
-             "i" => ".0\n0.\n..",
+             "i" => "0.\n0.\n0.",
              "j" => ".0\n..\n..",
-             "k" => "..\n..\n..",
+             "k" => "0.\n..\n0.",
              "l" => "0.\n0.\n0.",
              "m" => "..\n0.\n..",
-             "n" => ".0\n..\n..",
-             "o" => "0.\n..\n..",
-             "p" => "..\n..\n0.",
-             "q" => "..\n..\n00",
-             "r" => "..\n..\n..",
-             "s" => "..\n.0\n..",
-             "t" => ".0\n..\n..",
-             "u" => ".0\n0.\n..",
-             "v" => "..\n..\n..",
-             "w" => "..\n.0\n..",
-             "x" => ".0\n..\n..",
-             "y" => "..\n0.\n..",
-             "z" => "..\n.0\n.."
+             "n" => "00\n.0\n0.",
+             "o" => "0.\n.0\n0.",
+             "p" => "00\n0.\n0.",
+             "q" => "00\n00\n0.",
+             "r" => "0.\n00\n0.",
+             "s" => ".0\n0.\n0.",
+             "t" => ".0\00\n0.",
+             "u" => "0.\n..\n00",
+             "v" => "0.\n0.\n00",
+             "w" => ".0\n00\n.0",
+             "x" => "00\n..\n00",
+             "y" => "00\n0.\n00",
+             "z" => "0.\n.0\n00",
+             " " => "..\n..\n.."
             }
   end
 
   def turn_message_to_array(letters)
-    split_letters = letters.chomp.split("").map do |letter|
+    split_letters = letters.downcase.chomp.split("").map do |letter|
       letter
     end
   end
 
-  # def find_braille_by_letter(letter)
-  #   @dictionary[letter]
-  # end
-
   def find_braille_by_letter(letters)
-    characters = turn_message_to_array(letters).map do |letter|
-      @dictionary[letter]
-    end.compact[0]
+      characters = turn_message_to_array(letters).map do |letter|
+        @dictionary[letter]
+      end
   end
-
-
 end
