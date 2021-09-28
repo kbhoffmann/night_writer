@@ -13,12 +13,3 @@ braille_file.write(braille)
 braille_file.close
 
 puts "Created '#{ARGV[1]}' containing #{message_data.length} characters."
-#if you want to write an array to a file you'll have to convert it to a string first using...
-#this below (is called serialization)
-#File.write("log.txt", [1,2,3].join("\n"), mode: "a")
-
-#Create a Ruby program that prints the sample line of text provided above no
-#matter what arguments are provided from the command line.
-
-# print message_data
-# print braille
