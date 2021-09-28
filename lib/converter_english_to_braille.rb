@@ -31,7 +31,8 @@ class EnglishToBrailleConverter
              "x" => "00\n..\n00",
              "y" => "00\n0.\n00",
              "z" => "0.\n.0\n00",
-             " " => "..\n..\n.."
+             " " => "..\n..\n..",
+             "." => "..\n00\n.0"
             }
   end
 
@@ -44,6 +45,39 @@ class EnglishToBrailleConverter
   def find_braille_by_letter(letters)
       characters = turn_message_to_array(letters).map do |letter|
         @dictionary[letter]
-      end
+      end.join("\n")
   end
+
+  def shorten(letters)
+    letters.scan(/.{1,30}/)
+  end
+
+  def braille_message(letters)
+    shorten(letters).map do |letter|
+      find_braille_by_letter(letter)
+    end.join("\n")
+  end
+
+  # def shorten(letters)
+  #   if turn_message_to_array(letters).length >= 80
+  #     shortened = letters.scan(/.{1,30}/)
+  #     short = shortened.flat_map do |short|
+  #       x = turn_message_to_array(short)
+  #         x.filter_map do |letter|
+  #         @dictionary[letter]
+  #       end.join("\n")
+  #     end
+  #   else
+  #     find_braille_by_letter(letters)
+  #   end
+  # end
 end
+
+
+      # separated = characters.join("\n")
+      # console.log(separated)
+#   def separted
+#     find_braille_by_letter
+#   end
+#   var str = array.join(' ')+'.';
+# console.log(str)
