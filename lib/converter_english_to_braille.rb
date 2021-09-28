@@ -13,7 +13,7 @@ class EnglishToBrailleConverter
              "f" => "00\n0.\n00",
              "g" => "00\n00\n..",
              "h" => "0.\n00\n..",
-             "i" => "0.\n0.\n0.",
+             "i" => ".0\n0.\n..",
              "j" => ".0\n..\n..",
              "k" => "0.\n..\n0.",
              "l" => "0.\n0.\n0.",
@@ -55,7 +55,7 @@ class EnglishToBrailleConverter
   def braille_message(letters)
     shorten(letters).map do |letter|
       find_braille_by_letter(letter)
-    end.join("\n")
+    end
   end
 
   # def shorten(letters)
