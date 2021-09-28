@@ -6,7 +6,7 @@ message_data = message_file.read
 message_file.close
 
 letters = EnglishToBrailleConverter.new
-braille = letters.find_braille_by_letter(message_data)
+braille = letters.braille_message(message_data)
 
 braille_file = File.open(ARGV[1], "w")
 braille_file.write(braille)
