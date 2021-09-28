@@ -41,4 +41,11 @@ RSpec.describe EnglishToBrailleConverter do
     letters = "alkjdljladkgjalskdghaldskgjasdlgjalsdgjalsdgjalsdjglasdjgaldgsjsjdg;adsjgaljdsglsdg"
     expect(converter.shorten(letters)).to be_a(Array)
   end
+
+  it "can make a final braille message" do
+    converter = EnglishToBrailleConverter.new
+    
+    expected_abc_dogs = "0.\n..\n..\n" "0.\n0.\n..\n" "00\n..\n..\n" "..\n..\n..\n" "00\n.0\n..\n" "0.\n.0\n0.\n" "00\n00\n..\n" ".0\n0.\n0."
+    expect(converter.braille_message("abc dogs")).to eq(expected_abc_dogs)
+  end
 end
