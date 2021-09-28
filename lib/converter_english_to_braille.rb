@@ -54,30 +54,7 @@ class EnglishToBrailleConverter
 
   def braille_message(letters)
     shorten(letters).map do |letter|
-      find_braille_by_letter(letter)
-    end
+       find_braille_by_letter(letter)
+    end.join("\n")
   end
-
-  # def shorten(letters)
-  #   if turn_message_to_array(letters).length >= 80
-  #     shortened = letters.scan(/.{1,30}/)
-  #     short = shortened.flat_map do |short|
-  #       x = turn_message_to_array(short)
-  #         x.filter_map do |letter|
-  #         @dictionary[letter]
-  #       end.join("\n")
-  #     end
-  #   else
-  #     find_braille_by_letter(letters)
-  #   end
-  # end
 end
-
-
-      # separated = characters.join("\n")
-      # console.log(separated)
-#   def separted
-#     find_braille_by_letter
-#   end
-#   var str = array.join(' ')+'.';
-# console.log(str)
